@@ -1,3 +1,9 @@
+import { LoginRoute, RegisterRoute } from "./routes/auth";
+
 export function App() {
-    return <div>Hello World!</div>;
+    return (
+        <div>
+            <RegisterRoute />
+        </div>
+    );
 }

@@ -1,2 +1,2 @@
-export * from "./login";
-export * from "./register";
+export { LoginRoute } from "./login";
+export { RegisterRoute } from "./register";

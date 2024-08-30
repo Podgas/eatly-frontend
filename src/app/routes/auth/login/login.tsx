@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./login.module.css";
 
-export const LoginRoute = () => {
+const LoginRoute = () => {
     return <div>Login Page</div>;
 };
+
+export default LoginRoute;

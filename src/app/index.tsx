@@ -1,9 +1,11 @@
-import { LoginRoute, RegisterRoute } from "./routes/auth";
-
+import { AppProvider } from "./provider";
+import { AppRouter } from "./router";
 export function App() {
     return (
         <div>
-            <RegisterRoute />
+            <AppProvider>
+                <AppRouter />
+            </AppProvider>
         </div>
     );
 }

@@ -1,1 +1,1 @@
-export * from "./register";
+export { RegisterRoute } from "./register";

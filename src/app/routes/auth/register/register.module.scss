@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: c.$background-color;
+    background-color: var(--background-color);
 }
 .form-container {
     align-items: center;
@@ -13,7 +13,7 @@
     .form {
         display: flex;
         flex-direction: column;
-        background-color: c.$background-color;
+        background-color: var(--background-color);
         padding: 20px;
         border: 1px solid #0000004f;
         box-shadow: 0 0 10px 0 #0000004f;
@@ -26,7 +26,7 @@
             border-radius: 5px;
         }
         button {
-            background-color: c.$primary-color;
+            background-color: var(--background-color);
             color: white;
             cursor: pointer;
         }

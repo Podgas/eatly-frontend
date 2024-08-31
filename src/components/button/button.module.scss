@@ -1,0 +1,79 @@
+.btn {
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+
+    line-height: 1.5rem;
+    margin: 0;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    width: auto;
+
+    background-position: center;
+    transition:
+        ease-in-out 0.2s,
+        background 0.8s,
+        box-shadow 0.2s,
+        -ms-transform 0.1s,
+        -webkit-transform 0.1s,
+        transform 0.2s;
+
+    &:active {
+        transform: scale(0.96);
+        background-size: 100%;
+        transition: background 0s;
+    }
+
+    &.primary {
+        background-color: var(--primary-color);
+        color: var(--primary-color-contrast);
+        &:hover {
+            background: var(--primary-color-hover)
+                radial-gradient(
+                    circle,
+                    transparent 1%,
+                    var(--primary-color-hover) 1%
+                )
+                center/15000%;
+        }
+        &:active {
+            background-color: var(--primary-color);
+            background-size: 100%;
+        }
+    }
+
+    &.secondary {
+        background-color: var(--secondary-color);
+        color: var(--secondary-color-contrast);
+        &:hover {
+            background: var(--secondary-color-hover)
+                radial-gradient(
+                    circle,
+                    transparent 1%,
+                    var(--secondary-color-hover) 1%
+                )
+                center/15000%;
+        }
+        &:active {
+            background-color: var(--secondary-color);
+            background-size: 100%;
+        }
+    }
+}
+
+.sm {
+    padding: 4px 13px;
+    font-size: 0.8rem;
+}
+.md {
+    padding: 7px 22px;
+    font-size: 1rem;
+}
+.lg {
+    padding: 8px 26px;
+    font-size: 1.2rem;
+}

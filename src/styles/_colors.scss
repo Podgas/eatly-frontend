@@ -4,15 +4,25 @@
 
     --text: #50565fde;
     --text-secondary: #3a3541ad;
+    --text-disabled: #3a354a61;
 
     //Primary color
     --primary-color: #6c5fbc;
     --primary-color-hover: #8578e0;
     --primary-color-contrast: #f2f2f2;
 
+    //Secondary color
     --secondary-color: #8a8d93;
     --secondary-color-hover: #b6b8be;
     --secondary-color-contrast: #f0f0f0;
 
+    //Error color
+    --error-color: #ff6a6a;
+
+    //Decorations
     --box-shadow-color: #3a35411a;
+    --filled-input-color: #3a35411a;
+
+    --outline-color: #3a35413d;
+    --outline-color-hover: #6454cc;
 }

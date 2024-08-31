@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./landing.module.scss";
+import { Button } from "@/components/button";
+import { Link } from "react-router-dom";
 
 const LandingRoute = () => {
     return (
@@ -10,8 +12,12 @@ const LandingRoute = () => {
                 </h1>
                 <p>This is a simple landing page for the app.</p>
                 <div className={styles.buttonContainer}>
-                    <button>Log In</button>
-                    <button>Sign Up</button>
+                    <Link to="/auth/login">
+                        <Button variant="primary" size="md" label="Login" />
+                    </Link>
+                    <Link to="/auth/register">
+                        <Button variant="primary" size="md" label="Register" />
+                    </Link>
                 </div>
             </div>
         </div>

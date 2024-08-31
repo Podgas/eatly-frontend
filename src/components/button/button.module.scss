@@ -4,8 +4,7 @@
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
-
-    line-height: 1.5rem;
+    font-weight: 500;
     margin: 0;
     text-align: center;
     touch-action: manipulation;
@@ -28,6 +27,7 @@
         transition: background 0s;
     }
 
+    //Color Variants
     &.primary {
         background-color: var(--primary-color);
         color: var(--primary-color-contrast);
@@ -63,17 +63,21 @@
             background-size: 100%;
         }
     }
-}
 
-.sm {
-    padding: 4px 13px;
-    font-size: 0.8rem;
-}
-.md {
-    padding: 7px 22px;
-    font-size: 1rem;
-}
-.lg {
-    padding: 8px 26px;
-    font-size: 1.2rem;
+    //Sizes
+    &.sm {
+        padding: 4px 13px;
+        font-size: 0.8rem;
+        line-height: 22px;
+    }
+    &.md {
+        padding: 7px 22px;
+        font-size: 1rem;
+        line-height: 24px;
+    }
+    &.lg {
+        padding: 8px 26px;
+        font-size: 1.2rem;
+        line-height: 26px;
+    }
 }

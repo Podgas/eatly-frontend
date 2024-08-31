@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./button.module.scss";
+import { generateClassNames } from "@/utils/componentUtils";
 
 export interface ButtonProps {
     label: string;
@@ -7,11 +8,7 @@ export interface ButtonProps {
     size: "sm" | "md" | "lg";
 }
 
-function generateClassNames({ ...props }: ButtonProps): string {
-    const className = `${styles["btn"]} ${styles[props.variant]} ${styles[props.size]}`;
-    return className;
-}
-
 export const Button = (props: ButtonProps) => {
-    return <button className={generateClassNames(props)}>{props.label}</button>;
+    const cn = generateClassNames(props, styles["btn"], styles);
+    return <button className={cn}>{props.label}</button>;
 };

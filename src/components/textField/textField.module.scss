@@ -1,0 +1,166 @@
+.fieldRoot {
+    width: 100%;
+}
+
+.inputContainer {
+    position: relative;
+
+    .label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--background-color-paper);
+        color: var(--text-secondary);
+        transition: all 0.2s ease-in-out;
+        pointer-events: none;
+        width: auto;
+        height: auto;
+    }
+
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+        color: var(--text);
+
+        //Label Animation
+        &:focus + .label,
+        &:not(:placeholder-shown) + .label {
+            top: 0;
+            left: 12px;
+            font-size: 0.7rem;
+            color: #3f51b5; /* Primary color */
+            padding: 0 4px;
+            font-weight: 400;
+        }
+        &.sm {
+            font-size: 0.9rem;
+        }
+        &.lg {
+            font-size: 1rem;
+        }
+    }
+    //Variants
+    .outlined {
+        border: 1px solid var(--outline-color);
+        border-radius: 6px;
+
+        &:hover {
+            border-color: var(--outline-color-hover);
+        }
+        &:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0px 0px 0px 1px var(--primary-color); /* Replace with your primary color */
+        }
+
+        //Error & Disabled State
+        &.error {
+            border-color: var(--error-color);
+        }
+
+        &.disabled {
+            border: 1px dotted var(--outline-color);
+            + .label {
+                color: var(--text-disabled);
+            }
+        }
+        & + .label {
+            left: 18px;
+        }
+
+        //Size
+        &.sm {
+            padding: 8px;
+        }
+        &.lg {
+            padding: 16px;
+        }
+    }
+    .standard {
+        background: none;
+        border: none;
+        border-bottom: 1px solid var(--outline-color);
+
+        & + .label {
+            left: 0px;
+            background: none;
+        }
+        &:hover {
+            border-color: var(--outline-color-hover);
+        }
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        &:focus + .label,
+        &:not(:placeholder-shown) + .label {
+            left: 0px;
+            top: 10px;
+            padding: 0;
+        }
+        //Error & Disabled State
+        &.error {
+            border-color: var(--error-color);
+        }
+
+        &.disabled {
+            border-bottom: 1px dotted var(--outline-color);
+            + .label {
+                color: var(--text-disabled);
+            }
+        }
+
+        //Size
+        &.sm {
+            padding: 15px 0px 1px 0px;
+        }
+        &.lg {
+            padding: 26px 0px 6px 0px;
+        }
+    }
+
+    .filled {
+        background-color: var(--filled-input-color);
+        border: none;
+        border-radius: 6px 6px 0px 0px;
+        border-bottom: 1px solid var(--outline-color);
+
+        & + .label {
+            left: 0px;
+            background: none;
+        }
+        &:hover {
+            border-color: var(--outline-color-hover);
+        }
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        &:focus + .label,
+        &:not(:placeholder-shown) + .label {
+            top: 10px;
+        }
+
+        & + .label {
+            left: 18px;
+        }
+        //Error & Disabled State
+        &.error {
+            border-color: var(--error-color);
+        }
+
+        &.disabled {
+            border-bottom: 1px dotted var(--outline-color);
+            + .label {
+                color: var(--text-disabled);
+            }
+        }
+        //Size
+        &.sm {
+            padding: 15px 0px 1px 16px;
+        }
+        &.lg {
+            padding: 26px 0px 6px 16px;
+        }
+    }
+}

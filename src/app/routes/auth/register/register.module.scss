@@ -1,34 +1,42 @@
-.register-container {
+.root {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: var(--background-color);
-}
-.form-container {
     align-items: center;
-    justify-content: center;
-    display: flex;
+    background-color: var(--background-color);
+    .content {
+        margin-left: auto;
+        margin-right: auto;
 
-    .form {
+        background-color: var(--background-color-paper);
+        padding: 28px 36px;
+        box-shadow: 0 2px 10px var(--box-shadow-color);
+        border-radius: 6px;
+
         display: flex;
         flex-direction: column;
-        background-color: var(--background-color);
-        padding: 20px;
-        border: 1px solid #0000004f;
-        box-shadow: 0 0 10px 0 #0000004f;
+        align-items: center;
 
-        input,
-        button {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
+        .logoContainer {
+            margin-bottom: 32px;
         }
-        button {
-            background-color: var(--background-color);
-            color: white;
-            cursor: pointer;
+
+        .textContainer {
+            margin-bottom: 16px;
+            text-align: center;
+            h5 {
+                color: var(--text);
+                margin-bottom: 16px;
+            }
+            p {
+                color: var(--text-secondary);
+            }
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 20px 0;
         }
     }
 }

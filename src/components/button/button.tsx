@@ -6,9 +6,15 @@ export interface ButtonProps {
     label: string;
     variant: "primary" | "secondary";
     size: "sm" | "md" | "lg";
+    onClick?: () => void;
+    type?: "button" | "submit" | "reset";
 }
 
 export const Button = (props: ButtonProps) => {
     const cn = generateClassNames(props, styles["btn"], styles);
-    return <button className={cn}>{props.label}</button>;
+    return (
+        <button className={cn} onClick={props.onClick} type={props.type}>
+            {props.label}
+        </button>
+    );
 };

@@ -164,3 +164,13 @@
         }
     }
 }
+
+.helperText {
+    display: flex;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    &.error {
+        color: var(--error-color);
+    }
+}

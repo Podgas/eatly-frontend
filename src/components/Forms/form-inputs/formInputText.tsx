@@ -1,8 +1,8 @@
-import { TextField } from "../textField";
+import { TextField } from "../../UI/textField";
 import { Controller, useFormContext } from "react-hook-form";
 import { FormInputProps } from "./formInputProps";
 
-export const FormInputText = ({ name, label, req, type }: FormInputProps) => {
+export const FormInputText = ({ name, label, type }: FormInputProps) => {
     const {
         control,
         formState: { errors },
@@ -12,15 +12,6 @@ export const FormInputText = ({ name, label, req, type }: FormInputProps) => {
         <Controller
             control={control}
             name={name}
-            rules={{
-                required: { value: req, message: "This field is requried" },
-                validate: (value) => {
-                    if (type === "password" && value.length < 8) {
-                        return "Password must be at least 8 characters";
-                    }
-                    return true;
-                },
-            }}
             render={({ field }) => (
                 <>
                     <TextField

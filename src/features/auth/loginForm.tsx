@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import styles from "./auth.module.scss";
+import { useLogIn } from "./hooks/useLogIn";
 
 export default function LoginForm() {
     const methods = useForm<TLoginSchema>({
@@ -12,40 +13,10 @@ export default function LoginForm() {
     });
 
     const { control, reset, handleSubmit, setError } = methods;
+    const { logIn, error, isLoading } = useLogIn();
 
-    const onSubmit = async (data: TLoginSchema) => {
-        console.log(JSON.stringify(data));
-
-        const res = await fetch("http://192.168.0.21:3000/api/users/login", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const resJSON = await res.json();
-        if (!res.ok) {
-            alert("Something went wrong");
-            return;
-        }
-
-        if (resJSON.errors) {
-            const errors = resJSON.errors;
-            if (errors.email) {
-                setError("email", {
-                    type: "server",
-                    message: errors.email,
-                });
-            }
-            if (errors.password) {
-                setError("password", {
-                    type: "server",
-                    message: errors.password,
-                });
-            }
-        }
-
-        console.log(resJSON);
+    const onSubmit = async function async(data: TLoginSchema) {
+        await logIn(data.email, data.password);
     };
 
     return (

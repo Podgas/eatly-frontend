@@ -1,6 +1,22 @@
-import React from "react";
+import { Button } from "@/components/UI";
+import { useLogout } from "@/features/auth/hooks/useLogOut";
 
 const DashboardRoute = () => {
-    return <div>Dashboard Page</div>;
+    const { logOut } = useLogout();
+    const handleLogout = () => {
+        logOut();
+    };
+
+    return (
+        <div>
+            <h3>Dashboard</h3>
+            <Button
+                onClick={handleLogout}
+                label="Logout"
+                variant="primary"
+                size="lg"
+            />
+        </div>
+    );
 };
 export default DashboardRoute;

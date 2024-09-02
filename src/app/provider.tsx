@@ -1,3 +1,4 @@
+import { AuthContextProvider } from "@/features/auth/context/AuthContext";
 import React from "react";
 
 type AppProviderProps = {
@@ -5,5 +6,5 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-    return <>{children}</>;
+    return <AuthContextProvider>{children}</AuthContextProvider>;
 };

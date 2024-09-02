@@ -1,4 +1,3 @@
-"use client";
 import styles from "./register.module.scss";
 import { Logo } from "@/components/UI/logo";
 import RegisterForm from "@/features/auth/registerForm";

@@ -1,0 +1,37 @@
+.root {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    background-color: var(--background-color);
+    .content {
+        margin-left: auto;
+        margin-right: auto;
+
+        background-color: var(--background-color-paper);
+        padding: 28px 36px;
+        box-shadow: 0 2px 10px var(--box-shadow-color);
+        border-radius: 6px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logoContainer {
+            margin-bottom: 32px;
+        }
+
+        .textContainer {
+            margin-bottom: 16px;
+            margin-left: 15px;
+            margin-right: 15px;
+            text-align: center;
+            h5 {
+                color: var(--text);
+                margin-bottom: 16px;
+            }
+            p {
+                color: var(--text-secondary);
+            }
+        }
+    }
+}

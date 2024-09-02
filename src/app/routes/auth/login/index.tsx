@@ -1,1 +1,1 @@
-export { default as LoginRoute } from "./login";
+export { LoginRoute } from "./login";

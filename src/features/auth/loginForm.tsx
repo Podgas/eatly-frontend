@@ -28,6 +28,7 @@ export default function LoginForm() {
                     name="password"
                     type="password"
                 />
+                {error && <p className={styles.error}>{error}</p>}
                 <Button
                     label="Login"
                     variant="primary"

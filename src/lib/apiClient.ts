@@ -18,10 +18,12 @@ const signUpUser = async function (
             email,
             password,
         });
+
         return response.data;
     } catch (error: any) {
         const errorMessage = error.response?.data?.error || "Signup failed";
-        console.log(errorMessage);
+        console.log("API Client error: ", errorMessage);
+        throw new Error(errorMessage);
     }
 };
 
@@ -31,10 +33,12 @@ const logInUser = async function (email: string, password: string) {
             email,
             password,
         });
+
         return response.data;
     } catch (error: any) {
         const errorMessage = error.response?.data?.error || "Login failed";
-        console.log(errorMessage);
+        console.log("API Client error: ", errorMessage);
+        throw new Error(errorMessage);
     }
 };
 

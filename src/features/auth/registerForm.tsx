@@ -34,6 +34,7 @@ export default function RegisterForm() {
                     name="password_confirm"
                     type="password"
                 />
+                {error && <p className={styles.error}>{error}</p>}
                 <Button
                     label="Register"
                     variant="primary"

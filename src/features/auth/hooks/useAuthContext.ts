@@ -1,6 +1,12 @@
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 
+interface AuthState {
+    user: User | null;
+    loading: boolean;
+    error: string | null;
+}
+
 export const useAuthContext = () => {
     const context = useContext(AuthContext);
 

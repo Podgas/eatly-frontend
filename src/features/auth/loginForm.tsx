@@ -1,42 +1,51 @@
 import { Button } from "@/components/UI/button";
 import { FormInputText } from "@/components/Forms/form-inputs";
-import { loginSchema, TLoginSchema } from "@/lib";
+import { LoginInput, loginSchema } from "@/lib";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import styles from "./auth.module.scss";
-import { useLogIn } from "./hooks/useLogIn";
+import { useLogin } from "@/lib/auth";
 
-export default function LoginForm() {
-    const methods = useForm<TLoginSchema>({
+type LoginFormProps = {
+    onSuccess: () => void;
+};
+
+export default function LoginForm({ onSuccess }: LoginFormProps) {
+    const methods = useForm<LoginInput>({
         resolver: zodResolver(loginSchema),
     });
+    const { control, handleSubmit } = methods;
 
-    const { control, reset, handleSubmit, setError } = methods;
-    const { logIn, error, isLoading } = useLogIn();
+    const { loginMutation, error } = useLogin({ onSuccess });
 
-    const onSubmit = async function async(data: TLoginSchema) {
-        await logIn(data.email, data.password);
+    const onSubmit = function async(data: TLoginInput) {
+        loginMutation(data);
     };
 
     return (
-        <FormProvider {...methods}>
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                <FormInputText label="Email" name="email" />
-                <FormInputText
-                    label="Password"
-                    name="password"
-                    type="password"
-                />
-                {error && <p className={styles.error}>{error}</p>}
-                <Button
-                    label="Login"
-                    variant="primary"
-                    size="lg"
-                    type="submit"
-                />
-            </form>
-            <DevTool control={control} />
-        </FormProvider>
+        <>
+            <div className={styles.textContainer}>
+                <p>Please sign-in to your account.</p>
+            </div>
+            <FormProvider {...methods}>
+                <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+                    <FormInputText label="Email" name="email" />
+                    <FormInputText
+                        label="Password"
+                        name="password"
+                        type="password"
+                    />
+                    {error && <p className={styles.error}>{error.message}</p>}
+                    <Button
+                        label="Login"
+                        variant="primary"
+                        size="lg"
+                        type="submit"
+                    />
+                </form>
+                <DevTool control={control} />
+            </FormProvider>
+        </>
     );
 }

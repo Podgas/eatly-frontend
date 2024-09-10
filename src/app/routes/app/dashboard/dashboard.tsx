@@ -1,11 +1,7 @@
 import { Button } from "@/components/UI";
-import { useLogout } from "@/features/auth/hooks/useLogOut";
 
 const DashboardRoute = () => {
-    const { logOut } = useLogout();
-    const handleLogout = () => {
-        logOut();
-    };
+    const handleLogout = () => {};
 
     return (
         <div>

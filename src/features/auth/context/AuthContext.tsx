@@ -1,12 +1,13 @@
+import { useUser } from "@/lib/auth";
 import { createContext, Dispatch, useReducer, useEffect } from "react";
 
 interface AuthState {
-    user: { id: string; name: string } | null;
+    user: User | null;
 }
 
 export interface AuthAction {
     type: "LOGIN" | "LOGOUT";
-    payload?: { id: string; name: string } | void;
+    payload?: User | null;
 }
 
 const initialState: AuthState = {
@@ -49,11 +50,12 @@ interface AuthContextProviderProps {
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     const [state, dispatch] = useReducer(authReducer, { user: null });
+    const user = useUser();
+
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user") || "{}");
-        if (user) dispatch({ type: "LOGIN", payload: user });
+        if (user) dispatch({ type: "LOGIN", payload: user.data });
     }, []);
-    console.log("AuthContext state: ", state);
+    //console.log("AuthContext state: ", state);
 
     return (
         <AuthContext.Provider value={{ state, dispatch }}>

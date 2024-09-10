@@ -1,22 +1,26 @@
 import { Button } from "@/components/UI/button";
 import { FormInputText } from "@/components/Forms/form-inputs";
-import { signUpSchema, TSignUpSchema } from "@/lib";
+import { signUpSchema, SignUpInput } from "@/lib";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import styles from "./auth.module.scss";
-import { useSignUp } from "./hooks/useSignup";
+import { useSignUp } from "@/lib/auth";
 
-export default function RegisterForm() {
-    const methods = useForm<TSignUpSchema>({
+type RegisterFormProps = {
+    onSuccess: () => void;
+};
+
+export default function RegisterForm({ onSuccess }: RegisterFormProps) {
+    const methods = useForm<SignUpInput>({
         resolver: zodResolver(signUpSchema),
     });
 
-    const { control, reset, handleSubmit, setError } = methods;
-    const { signUp, error, isLoading } = useSignUp();
+    const { control, handleSubmit } = methods;
+    const { signUpMutation, error } = useSignUp({ onSuccess });
 
-    const onSubmit = async function async(data: TSignUpSchema) {
-        await signUp(data.name, data.email, data.password);
+    const onSubmit = function async(data: TSignUpInput) {
+        signUpMutation(data);
     };
 
     return (
@@ -34,7 +38,7 @@ export default function RegisterForm() {
                     name="password_confirm"
                     type="password"
                 />
-                {error && <p className={styles.error}>{error}</p>}
+                {error && <p className={styles.error}>{error.message}</p>}
                 <Button
                     label="Register"
                     variant="primary"

@@ -1,19 +1,12 @@
-import styles from "./login.module.scss";
-import { Logo } from "@/components/UI/logo";
+import { AuthLayout } from "@/components/layouts/authLayout";
 import LoginForm from "@/features/auth/loginForm";
+import { useNavigate } from "react-router-dom";
 
 export const LoginRoute = () => {
+    const navigate = useNavigate();
     return (
-        <div className={styles.root}>
-            <div className={styles.content}>
-                <div className={styles.logoContainer}>
-                    <Logo />
-                </div>
-                <div className={styles.textContainer}>
-                    <p>Please sign-in to your account.</p>
-                </div>
-                <LoginForm />
-            </div>
-        </div>
+        <AuthLayout>
+            <LoginForm onSuccess={() => navigate("/app")} />
+        </AuthLayout>
     );
 };
